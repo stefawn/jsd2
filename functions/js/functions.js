@@ -13,7 +13,6 @@ function add(x, y) {
 }
 
 function multiply(x, y) {
-	// multiply two numbers, store result in product
 	var product = x * y;
 	return product;
 }
