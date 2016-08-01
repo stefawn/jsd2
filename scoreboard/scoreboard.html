@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scoreboard</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/scoreboard.css">
+	<link rel="stylesheet" href="css/instructions.css">
+</head>
+<body>
+
+<div class="container">
+	<div id="score">0 Points</div>
+	<div class="margin-top-20">
+		<button class="button-1" id="increase-5">+5 Points</button>
+	</div>
+	<div class="margin-top-20">
+		<button class="button-1" id="decrease-5">-5 Points</button>
+	</div>
+	<div class="margin-top-20">
+		<input id="custom-score" type="text" placeholder="Set a custom score" />
+	</div>
+	<div class="margin-top-20">
+		<button id="submit-custom-score" class="button-2">Set Score</button>
+	</div>
+</div>
+
+
+
+
+
+
+<section class="instructions">
+
+	<header>
+		<p>Exercise: Scoreboard</p>
+	</header>
+
+	<section>
+		<article>
+			<h1>Instructions</h1>
+
+			<p>We will be creating a simple scoreboard application using JavaScript. The HTML and CSS has already been done for you.</p>
+
+			<h2>Tasks</h2>
+			<ol>
+				<li>
+					Add a link to your own custom JS file.
+				</li>
+				<li>
+					Get all the interactive Elements on the page and save them in variables.
+				</li>
+				<li>
+					Setup a click event listeners on the +5 and -5 point buttons. Change the innerHTML of the score display appropriately.
+				</li>
+				<li>
+					Setup a click event listener on the Set Score button. Set the innerHTML of the score display to the score entered in the text box. You'll need to get the .value of the text box. 
+
+					<p>Remember: An Element's value property is a string. You're going to need to use a little <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt">parseInt()</a> magic to convert it so you can do the maths.
+				</li>
+			</ol>
+
+
+			<h2>Refactoring tip</h2>
+			<p>Always practice the principle of <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>. Create a separate function to update the DOM and make the changes to the score display. Instead of having to write your DOM manipulation logic over and over in each event handler.</p>
+
+			<h2>Bonuses</h2>
+			<p>Lets make it more resilient.</p>
+			<ol>
+				<li>Create a check in your code to make sure the score will not go negative.
+				<li>Check to make sure the input value is a number. Do nothing if it's not a number.</li>
+			</ol>
+		</article>
+
+		<aside>
+			<h2>This exercise draws the following skills</h2>
+			<ul>
+				<li>events</li>
+				<li>event listeners</li>
+				<li>concatenation</li>
+			</ul>
+		</aside>
+	</section>
+</section>
+
+
+
+
+
+
+
+
+
+<script src="js/scoreboard.js"></script>
+</body>
+</html>

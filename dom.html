@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>DOM Tree</title>
+</head>
+<body>
+
+<h1>DOM Tree</h1>
+
+<div>
+		<p> Put a bird on it raw denim kale chips blog kitsch pickled, four loko salvia sartorial fingerstache locavore messenger bag YOLO butcher hashtag. Master cleanse banjo leggings mustache, scenester kogi synth offal you probably haven't heard of them YOLO knausgaard mlkshk helvetica. Banh mi microdosing selvage everyday carry roof party. </p>
+</div>
+
+		<p> Paleo bushwick before they sold out, twee freegan blog bespoke gastropub quinoa beard. Sriracha literally salvia, whatever ennui tilde kombucha chartreuse master cleanse trust fund. Deep v art party four dollar toast distillery. Ramps selfies brooklyn celiac, etsy DIY schlitz keytar kickstarter lo-fi ugh mlkshk shoreditch. Master cleanse chartreuse butcher gochujang, squid VHS celiac literally man braid wayfarers. </p>
+
+		<p> Fashion axe food truck bicycle rights bitters craft beer four loko, post-ironic yuccie iPhone tilde migas pug. Street art cardigan blue bottle dreamcatcher put a bird on it fashion axe knausgaard, affogato selvage lo-fi. Mlkshk fashion axe twee cray, artisan flexitarian raw denim squid messenger bag ethical blog gentrify williamsburg. Forage farm-to-table bitters, pinterest synth portland schlitz occupy freegan vinyl. </p>
+
+<ul id = "menu">
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+</ul>
+
+<style>
+
+div p {
+	color: blue;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script>
+
+var div = document.querySelector("div"); 
+var p = document.querySelector("div p");
+
+function updateParagraph(text){
+	console.log('bad updateParagraph');
+	p.innerHTML = text;
+}
+
+//jQuery example
+
+var $div = $("div"); //instead of using querySelector
+var $p = $("div p");
+
+function updateParagraphWithQuery(text) { 
+	console.log('bad updateParagraphWithQuery');
+	$p.html(text); //innerHTML in regular JS
+} 
+
+// Adding elements in DOM
+
+function addListItem(something) {
+	var li = document.createElement("li");
+	li.innerHTML = something;
+	menu.appendChild(li);
+}
+
+/// ^Example of a function, separate elements below..
+
+var menu = document.querySelector("#menu");
+
+//Step 1: Create new Elements
+var li = document.createElement("li");
+
+//Step 3: Append new Element to DOM
+menu.appendChild(li);
+
+//Step 2: Add content/attributes to Elements
+li.innerHTML = "4";
+
+</script>
+
+</body>
+</html>
