@@ -11,8 +11,6 @@ and store it in a variable called `flickerObj`
 
 var flickerObj = JSON.parse(jsonString);
 
-// console.log(flickerObj);
-
 /*
 Part 2. Iterate (this means 'use a loop') and do a console.log 
 of each of the item titles with the date the photo was taken. 
@@ -27,7 +25,6 @@ for (var i = 0; i < pictures.length; i++) {
 	console.log(pictures[i].title + ". " + pictures[i].date_taken);
 };
 
-
 /*
 Part 3. Create a new array called 'links'. Iterate through the 
 items array in flickerObj and store the the links to each 
@@ -40,7 +37,6 @@ for (var i = 0; i < pictures.length; i++) {
 	console.log(pictures[i].link);
 	links.push(pictures[i].link);
 };
-
 
 /*
 Part 4. Convert the 'links' array into a JSON string. 
