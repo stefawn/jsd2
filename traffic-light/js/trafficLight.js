@@ -5,7 +5,6 @@ var slowButton = document.querySelector(".slow-button");
 var goButton = document.querySelector(".go-button");
 var cautionButton = document.querySelector(".caution-button");
 var trafficLight = document.querySelector("#traffic-light");
-
 var runButton = document.querySelector(".run-button");
 
 
@@ -14,7 +13,6 @@ stopButton.addEventListener("click", stop);
 slowButton.addEventListener("click", slow);
 goButton.addEventListener("click", go);
 cautionButton.addEventListener("click", caution);
-
 runButton.addEventListener("click", run);
 
 
