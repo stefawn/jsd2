@@ -7,7 +7,7 @@ var cautionButton = document.querySelector(".caution-button");
 var trafficLight = document.querySelector("#traffic-light");
 var runButton = document.querySelector(".run-button");
 
-
+ 
 // Event Listeners
 stopButton.addEventListener("click", stop);
 slowButton.addEventListener("click", slow);
@@ -40,7 +40,6 @@ function go(e) {
 }
 
 function caution(e) {
-  slow(e);
   setInterval(function() {
     trafficLight.classList.toggle("slow");
   }, 1000);
@@ -56,4 +55,6 @@ function interval(e) {  //needs work..
   setInterval(slow, 2000);
   setInterval(go, 3000);
 }
+
+
 
