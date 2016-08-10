@@ -9,8 +9,10 @@ var titleSearch = document.querySelector("form .search");
 var button = document.querySelector("button");
 
 var details = document.querySelector(".details");
-var detailsImage = document.querySelector(".image");
-var detailsText = document.querySelector(".text");
+var detailsImage = document.querySelector("img");
+var detailsTitle = document.querySelector(".title");
+var detailsPlot = document.querySelector(".plot");
+var detailsLink = document.getElementById("myLink");
 
 var ul = document.querySelector(".results");
 
@@ -40,10 +42,12 @@ function movieSearch(e) {
 function updateList(json) {
 	console.log("updateList", json);
 	ul.innerHTML = "";
-	detailsText.innerHTML = "";
-	detailsImage = "";
-	json.Search.forEach(moviesList);
+	detailsTitle.innerHTML = "";
+	detailsPlot.innerHTML = "";
+	detailsLink.innerHTML = "";
 
+	detailsImage.src = "";
+	json.Search.forEach(moviesList);
 }
 
 function showDetail(movie) {
@@ -58,10 +62,13 @@ function showDetail(movie) {
 	
 	var dataUrl = "http://www.omdbapi.com/?i=" + movieSearchId + "&plot=full&r=json";
 	$.getJSON(dataUrl, setPoster);
+
+	detailsLink.href = "http://www.imdb.com/title/" + movieSearchId;
 }
 
 function setDetail(e) {
-	details.textContent = e.Plot;
+	detailsTitle.textContent = e.Title;
+	detailsPlot.textContent = e.Plot;
 }
 
 function setPoster(e) {
