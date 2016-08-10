@@ -64,7 +64,7 @@ function showDetail(movie) {
 		detailsLink.href = "https://www.imdb.com/title/" + movieSearchId;
 		detailsLink.textContent = "View on IMDb";
 	}
-		
+
 }
 
 function setDetail(e) {
@@ -84,15 +84,17 @@ function moviesList(movie) {
 	var p = document.createElement("p");
 	var img = document.createElement("img");
 
-	img.src = movie.Poster //need to update this with JSON object
+	img.src = movie.Poster;
 	p.textContent = movie.Title;
+	li.id = movie.imdbID;
 
 	ul.appendChild(li);
 	li.appendChild(img);
 	li.appendChild(p);
 
-	li.id = movie.imdbID;
-
+	if (img.src.length === 3) {
+		img.src === "http://image.shutterstock.com/z/stock-photo-old-mm-movie-film-reel-17108638.jpg";
+	}
 }
 
 
