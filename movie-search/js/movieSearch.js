@@ -31,7 +31,7 @@ function movieSearch(e) {
 	var search = titleSearch.value;
 	console.log(search);
 
-	var dataUrl = "http://www.omdbapi.com/?s=" + search;
+	var dataUrl = "https://www.omdbapi.com/?s=" + search;
 	$.getJSON(dataUrl, updateList);
 }
 
@@ -57,13 +57,13 @@ function showDetail(movie) {
 		var movieSearchId = target.getAttribute("id");
 	}
 
-	var detailUrl = "http://www.omdbapi.com/?i=" + movieSearchId + "&plot=full&r=json";
+	var detailUrl = "https://www.omdbapi.com/?i=" + movieSearchId + "&plot=full&r=json";
 	$.getJSON(detailUrl, setDetail);
 	
-	var dataUrl = "http://www.omdbapi.com/?i=" + movieSearchId + "&plot=full&r=json";
+	var dataUrl = "https://www.omdbapi.com/?i=" + movieSearchId + "&plot=full&r=json";
 	$.getJSON(dataUrl, setPoster);
 
-	detailsLink.href = "http://www.imdb.com/title/" + movieSearchId;
+	detailsLink.href = "https://www.imdb.com/title/" + movieSearchId;
 	detailsLink.textContent = "View on IMDb";
 }
 
