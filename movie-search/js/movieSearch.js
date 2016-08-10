@@ -28,8 +28,13 @@ ul.addEventListener("click", showDetail);
 // ----------------------------------------------
 function movieSearch(e) {
 	event.preventDefault();
+	
 	var search = titleSearch.value;
-	console.log(search);
+	//console.log(search);
+
+	if (search == "") {
+		return;
+	} else if (search != "") 
 
 	var dataUrl = "https://www.omdbapi.com/?s=" + search;
 	$.getJSON(dataUrl, updateList);
@@ -92,9 +97,6 @@ function moviesList(movie) {
 	li.appendChild(img);
 	li.appendChild(p);
 
-	if (img.src.length === 3) {
-		img.src === "http://image.shutterstock.com/z/stock-photo-old-mm-movie-film-reel-17108638.jpg";
-	}
 }
 
 
