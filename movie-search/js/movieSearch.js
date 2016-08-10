@@ -35,8 +35,9 @@ function movieSearch(e) {
 	if (search == "") {
 		return;
 	} else if (search != "") {
-		var dataUrl = "https://www.omdbapi.com/?s=" + search;
-		$.getJSON(dataUrl, updateList);
+
+	var dataUrl = "https://www.omdbapi.com/?s=" + search;
+	$.getJSON(dataUrl, updateList);
 	}
 }
 
@@ -89,6 +90,7 @@ function moviesList(movie) {
 	var p = document.createElement("p");
 	var img = document.createElement("img");
 
+	img.src = movie.Poster;
 	p.textContent = movie.Title;
 	li.id = movie.imdbID;
 
@@ -96,10 +98,8 @@ function moviesList(movie) {
 	li.appendChild(img);
 	li.appendChild(p);
 
-	if (movie.Poster == "N/A") {
-		movie.Poster = "http://image.shutterstock.com/z/stock-photo-old-mm-movie-film-reel-17108638.jpg";
-	} else if (movie.Poster != "N/A") {
-		img.src = movie.Poster;
+	if (img.src.length === 3) {
+		img.src === "http://image.shutterstock.com/z/stock-photo-old-mm-movie-film-reel-17108638.jpg";
 	}
 }
 
