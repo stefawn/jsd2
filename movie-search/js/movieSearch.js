@@ -55,16 +55,16 @@ function showDetail(movie) {
 	
 	if (target.tagName === "LI") {
 		var movieSearchId = target.getAttribute("id");
+		var detailUrl = "https://www.omdbapi.com/?i=" + movieSearchId + "&plot=full&r=json";
+		$.getJSON(detailUrl, setDetail);
+		
+		var dataUrl = "https://www.omdbapi.com/?i=" + movieSearchId + "&plot=full&r=json";
+		$.getJSON(dataUrl, setPoster);
+
+		detailsLink.href = "https://www.imdb.com/title/" + movieSearchId;
+		detailsLink.textContent = "View on IMDb";
 	}
-
-	var detailUrl = "https://www.omdbapi.com/?i=" + movieSearchId + "&plot=full&r=json";
-	$.getJSON(detailUrl, setDetail);
-	
-	var dataUrl = "https://www.omdbapi.com/?i=" + movieSearchId + "&plot=full&r=json";
-	$.getJSON(dataUrl, setPoster);
-
-	detailsLink.href = "https://www.imdb.com/title/" + movieSearchId;
-	detailsLink.textContent = "View on IMDb";
+		
 }
 
 function setDetail(e) {
