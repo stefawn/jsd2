@@ -1,0 +1,28 @@
+body {
+	background: thistle;
+	color: navy;
+	font-size: 16px;
+	margin: 50px;
+	font-family: arial;
+}
+
+li {
+	padding: 10px;
+	margin: 10px;
+}
+
+.thistle {
+	background-color: thistle;
+}
+
+.olive {
+	background-color: olive;
+}
+
+.lightsalmon {
+	background-color: lightsalmon;
+}
+
+.maroon {
+	background-color: maroon;
+}

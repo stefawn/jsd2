@@ -2,6 +2,7 @@
 // ------------------------------------
 var form = document.querySelector("form"); //where zip box is contained
 var zip = document.querySelector("form .zip"); //where zip code search/input is
+var submit = document.querySelector();
 var ul = document.querySelector(".results");
 
 
@@ -39,7 +40,7 @@ function updateRestaurants(json) {
 	//to clear results each time we search
 	ul.innerHTML = "" ; 
 
-	//Unpack restaurants from json array; dont forget to add a variable in function (orange); not very clear about thisssss
+	//Unpack restaurants from json array; dont forget to add a variable in function (orange - not very clear about thisssss)
 	json.restaurants.forEach(createRestaurant);
 }
 
