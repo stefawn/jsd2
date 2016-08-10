@@ -64,6 +64,7 @@ function showDetail(movie) {
 	$.getJSON(dataUrl, setPoster);
 
 	detailsLink.href = "http://www.imdb.com/title/" + movieSearchId;
+	detailsLink.textContent = "View on IMDb";
 }
 
 function setDetail(e) {
