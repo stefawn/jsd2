@@ -7,7 +7,6 @@
 ] ,
 "nodes": [
 {"name":"App Review1"},
-{"name":"App Review2"},
 {"name":"RPS"},
 {"name":"TPS"},
 {"name":"Onsite"}
