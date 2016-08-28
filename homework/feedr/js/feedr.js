@@ -15,14 +15,12 @@
 ];
 
 var newsKey = "ad44048f73594da9be05e195bd80a94f";
-var newsSource = "techcrunch";
+var newsSource = "engadget";
 var sourceJson;
 var homeArticles = [];
 
 //Elements
-var container = document.querySelector(".container"),
-	results = document.querySelector("#main"),
-	popUp = document.querySelector("#popUp"),
+var	popUp = document.querySelector("#popUp"),
 	closePopUp = document.querySelector(".closePopUp"),
 	articles = document.querySelector("#main"),
 	articleTitle = document.querySelector(".articleContent a"),
@@ -43,42 +41,19 @@ sourcesDropdown.addEventListener("click", selectSource);
 home.addEventListener("click", showDefaultSource);
 search.addEventListener("click", toggleSearch);
 
-
 //API access
 function getArticles(newsSource) {
 	var url = "https://newsapi.org/v1/articles?source=" + newsSource + "&apiKey=" + newsKey;
-	$.getJSON(url, updateArticles);
-};
-
-//Event Handlers
-function loadArticles(newsSource) {
-	var url = "https://newsapi.org/v1/articles?source=" + newsSource + "&apiKey=" + newsKey;
-	$.getJSON(url, displayArticles);
-};
-
-function displayArticles(json) {
-	console.log("displayArticles", json.articles);
-	homeArticles.push(json.articles);
-	homeArticles = [].concat.apply([], homeArticles);
-};
-
-function loadHome() {
-	getArticles(newsSource);
-	sources.forEach(getSource);
-
-	function getSource(i) {
-		var loadAll = loadArticles(i.code);
-		console.log(i.code);
-	}
+	$.getJSON(url, updateArticles).fail(failedPull);
 };
 
 // Update view
 
 function updateArticles(json){
-	results.innerHTML = "";
+	main.innerHTML = "";
 
 	var template = Handlebars.compile(feedTemplate.innerHTML);
-	results.innerHTML = template(json.articles);
+	main.innerHTML = template(json.articles);
 
 	popUp.classList.add("hidden");
 	
@@ -102,10 +77,9 @@ function selectSource(e) {
 };
 
 function showDefaultSource(e) {
-	console.log("sup");
 	e.preventDefault();
-	newsSource = sources[0].code;
-	currentSource.innerHTML = sources[0].name;
+	newsSource = sources[2].code;
+	currentSource.innerHTML = sources[2].name;
 	getArticles(newsSource);
 };
 
@@ -150,8 +124,31 @@ function closeOut(e) {
 //Error
 function failedPull() {
 	popUp.classList.remove("loader");
-	articlePreviewDesc.classlist.add("error");
+	articlePreviewTitle.innerHTML = "oops.."
+	articlePreviewDesc.classList.add("error");
  	articlePreviewDesc.innerHTML = "sorry";
 	articlePreviewLink.classList.add("hidden");
 
+};
+
+//Home
+function loadArticles(newsSource) {
+	var url = "https://newsapi.org/v1/articles?source=" + newsSource + "&apiKey=" + newsKey;
+	$.getJSON(url, displayArticles);
+};
+
+function displayArticles(json) {
+	console.log("displayArticles", json.articles);
+	homeArticles.push(json.articles);
+	homeArticles = [].concat.apply([], homeArticles);
+};
+
+function loadHome() {
+	getArticles(newsSource);
+	sources.forEach(getSource);
+
+	function getSource(i) {
+		var loadAll = loadArticles(i.code);
+		console.log(i.code);
+	}
 };
