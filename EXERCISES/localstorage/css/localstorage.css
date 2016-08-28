@@ -1,0 +1,10 @@
+body {
+	background: white;
+	color: navy;
+	font-size: 16px;
+	margin: 50px;
+}
+
+* {
+	margin: 10px;
+}
