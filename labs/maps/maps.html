@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maps &amp; Location</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/maps.css">
+</head>
+<body>
+
+
+<h1>Maps &amp; Location</h1>
+
+
+
+<h2>Demo 4: JavaScript Geolocation API</h2>
+<p>Get the location of your phone/computer, adjust the map, and show the location</p>
+<p>Docs: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation">https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation</a></p>
+<p>(Test in Safari - <a href="https://developers.google.com/web/updates/2016/04/geolocation-on-secure-contexts-only?hl=en">requires https protocol</a> in Chrome)</p>
+<div class="map" id="geolocation-map"></div>
+
+
+
+
+<h2>Demo 3: Google Places API</h2>
+<p>Perform a search, loop thru the resulting Place objects, and add a marker for each place</p>
+<p>Docs: <a href="https://developers.google.com/places/web-service/search">https://developers.google.com/places/web-service/search</a></p>
+<div class="map" id="places-map"></div>
+
+
+
+
+<h2>Demo 2: Google Maps JavaScript API</h2>
+<p>Create a Map and add one Marker</p>
+<p>Docs: <a href="https://developers.google.com/maps/documentation/javascript/tutorial">https://developers.google.com/maps/documentation/javascript/tutorial</a></p>
+<div class="map" id="google-map"></div>
+
+
+
+
+<h2>Demo 1: Google Static Maps API</h2>
+<p>Create a static map using an <code>&lt;img&gt;</code> element</p>
+<p>Docs: <a href="https://developers.google.com/maps/documentation/static-maps">https://developers.google.com/maps/documentation/static-maps</a></p>
+<img src ="https://maps.googleapis.com/maps/api/staticmap?center=37.790841,-122.40128&zoom=15&size=600x400&key=AIzaSyAKGd89-Lamr-4lDfKkgHHXckocjJY7zsc&maptype=satellite">
+
+
+
+<!-- Load Google Maps JavaScript, with places support -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCadt0bucU5R_bmkVCvPDMwJGj0WWnG0B8&callback=initMap&libraries=places" async defer></script>
+
+<script src="js/maps.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

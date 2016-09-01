@@ -1,4 +1,4 @@
-// Setup
+// Sources 
  var sources =  [
 	{
 			name: "Techcrunch",

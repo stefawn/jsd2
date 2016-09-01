@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Foodie</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/foodie-v3.css">
+</head>
+<body>
+
+<header>
+	<h1>Foodie v3</h1>
+</header>
+
+<form>
+	<input class="zip" placeholder="Zip code">
+</form>
+
+<div class="header"></div>
+
+<div class="map" id="places-map"></div>
+
+<ul class="results"></ul>
+
+
+
+
+<script id="header-template" type="text/x-handlebars-template">
+	<p>{{total_entries}} results found in {{restaurants.0.postal_code}}</p>
+	<p class="page">Page {{current_page}}</p>
+</script>
+
+
+<script id="restaurant-template" type="text/x-handlebars-template">
+	{{#each this}}
+		<li>
+			<img src="{{image_url}}">
+			<h2>{{name}}</h2>
+			<p>{{address}}</p>
+			<p>
+				<a href="{{reserve_url}}">Make Reservation</a>
+			</p>
+		</li>
+	{{/each}}
+</script>
+
+
+<!-- 
+	<li>
+		<img src="http://www.thaifoodandtravel.com/images/pad-thai-04.jpg">
+		<h2>Name</h2>
+		<p>Address</p>
+	</li>
+
+ -->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+
+<script src="js/foodieV3.js"></script>
+<script src="js/foodie-maps.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCadt0bucU5R_bmkVCvPDMwJGj0WWnG0B8&callback=initMap&libraries=places" async defer></script>
+
+
+</body>
+</html>

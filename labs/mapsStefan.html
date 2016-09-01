@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>Maps</title>
+<style>
+  html, body {
+    height: 100%;
+    margin: 10px;
+    padding: 0;
+  }
+  .map {
+    width: 500px;
+    height: 500px;
+  }
+</style>
+
+</head>
+<body>
+
+<h1>Maps</h1>
+<h2>Google Maps JavaScript API</h2>
+
+<div class="map"></div>
+
+<h2>Google Static Maps</h2>
+<img src ="https://maps.googleapis.com/maps/api/staticmap?center=37.790841, -122.40128&zoom=15&size=500x500&key=AIzaSyAKGd89-Lamr-4lDfKkgHHXckocjJY7zsc">
+
+<script>
+
+//Elements
+var mapEl = document.querySelector(".map");
+
+//Setup
+var map;
+
+//Map options
+var options = {
+	center: { lat: 37.790841, lng: -122.40128 },
+	zoom: 10
+};
+
+//callback function in the script tag
+function initMap() {
+	console.log("initMap");
+
+//setup new google map object
+	map = new google.maps.Map(mapEl, options);
+
+//setup new places api search
+
+	var service = new google.maps.places.PlacesService(map);
+	service.nearbySearch({
+		location: { lat: 37.790841, lng: -122.40128 },
+		radius: 10,
+		type: ['store']
+	}, displayResults);
+
+// callback function with search result data
+// call createMarker 1 time for each place
+	function displayResults(results, status) {
+		console.log("displayResults");
+	//	results.forEach(createMarker);
+	};
+
+// place is generic google type
+	function createMarker(place) {
+		console.log("createMarker");
+			var marker = new google.maps.Marker({
+				map: map,
+				position: place.geometry.location
+			});
+	};
+
+//Geolocation - this fires off when the initMap callback function is loaded
+	navigator.geolocation.getCurrentPosition(updateLocation);
+
+};
+
+
+
+function updateLocation(position) {
+	console.log("updateLocation");
+	console.log(position.coords);
+	var lat = position.coords.latitude;
+	var lng = position.coords.longitude;
+
+	var marker = new google.maps.Marker({
+		map: map,
+		position: {
+			lat: lat,
+			lng: lng
+		}
+	})
+}
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFEcZo9ZkgKXoaisKwfKKuQx7uAtHZFi8&callback=initMap&libraries=places" async defer></script>
+
+
+</body>
+</html>
+
