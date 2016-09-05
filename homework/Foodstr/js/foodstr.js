@@ -4,7 +4,7 @@ var search = document.querySelector("#search");
 var results = document.querySelector(".results");
 var display = document.querySelector(".display");
 var favoritesList = document.querySelector(".favorites-list");
-var button;
+var searchButton = document.querySelector(".search-button");
 
 var headerTemplate = document.querySelector("#header-template");
 var restaurantTemplate = document.querySelector("#restaurant-template");
@@ -21,6 +21,7 @@ var favoriteRestaurants = [];
 window.addEventListener("load", loadListFirebase);
 form.addEventListener("submit", getRestaurants);
 display.addEventListener("click", saveRestaurant);
+searchButton.addEventListener("click", getRestaurants);
 
 // Firebase Setup
 var firebaseRef = new Firebase("https://foodstr-a1343.firebaseio.com/");
@@ -28,6 +29,7 @@ var firebaseRef = new Firebase("https://foodstr-a1343.firebaseio.com/");
 // Event Handlers 
 // ------------------------------------
 function getRestaurants(event) {
+	event.preventDefault();
 	var searchString = search.value;
 	console.log("getRestaurants");
 	if (isNaN(searchString) === false) {
@@ -90,7 +92,6 @@ function updateRestaurants(json) {
 	json.restaurants.forEach(savePinLocations);
 
 	createMarkers();
-
 }
 
 function clearPrevious() {
@@ -119,67 +120,67 @@ function favListFirebase() {
 
 // Map Functions
 // ------------------------------------
-// function initMap() {
-// 	loadMap();
-// }
+function initMap() {
+	loadMap();
+}
 
-// function loadMap() {
-// 	var el = document.querySelector('#places-map');
+function loadMap() {
+	var el = document.querySelector('#places-map');
 
-// 	var options = {
-// 		center: { lat: 37.798969, lng: -122.407312 },
-// 		zoom: 10
-// 	};
+	var options = {
+		center: { lat: 37.798969, lng: -122.407312 },
+		zoom: 10
+	};
 
-// 	map = new google.maps.Map(el, options);
+	map = new google.maps.Map(el, options);
 
-// }
+}
 
-// function createMarkers() {
-// 	// clears out previous map markers
-// 	deleteOverlays();
+function createMarkers() {
+	// clears out previous map markers
+	deleteOverlays();
 
-// 	for (i = 0; i < pinLocations.length; i++) {
-// 		markers[i] = new google.maps.Marker({
-// 			position: new google.maps.LatLng(pinLocations[i].lat, pinLocations[i].lng),
-// 			map: map
-// 		});
+	for (i = 0; i < pinLocations.length; i++) {
+		markers[i] = new google.maps.Marker({
+			position: new google.maps.LatLng(pinLocations[i].lat, pinLocations[i].lng),
+			map: map
+		});
 
-// 		markers[i].index = i;
-// 		contents[i] = '<div class="popup_container">'+'<b>'+pinLocations[i].name+'</b>'+'</div>';
+		markers[i].index = i;
+		contents[i] = '<div class="popup_container">'+'<b>'+pinLocations[i].name+'</b>'+'</div>';
 
-// 		infowindows[i] = new google.maps.InfoWindow({
-// 			content: contents[i],
-// 			maxWidth: 300
-// 		});
+		infowindows[i] = new google.maps.InfoWindow({
+			content: contents[i],
+			maxWidth: 300
+		});
 
-// 	//adding labels when you click	
-// 		google.maps.event.addListener(markers[i], "click", function() {
-// 			console.log(this.index);
-// 			infowindows[this.index].open(map,markers[this.index]);
-// 			map.panTo(markers[this.index].getPosition());
-// 		});
-// 	}
+	//adding labels when you click	
+		google.maps.event.addListener(markers[i], "click", function() {
+			console.log(this.index);
+			infowindows[this.index].open(map,markers[this.index]);
+			map.panTo(markers[this.index].getPosition());
+		});
+	}
 
-// 	//center map on where pins are
-// 	var bounds = markers.reduce(function(bounds, marker) {
-// 		return bounds.extend(marker.getPosition());
-// 	}, new google.maps.LatLngBounds());
+	//center map on where pins are
+	var bounds = markers.reduce(function(bounds, marker) {
+		return bounds.extend(marker.getPosition());
+	}, new google.maps.LatLngBounds());
 	
-// 	map.setCenter(bounds.getCenter());
-// 	map.fitBounds(bounds);
-// }
+	map.setCenter(bounds.getCenter());
+	map.fitBounds(bounds);
+}
 
 
-// function deleteOverlays() {
-// 	console.log("deleteOverlays");
-// 	if (markers) {
-// 		for (i in markers) {
-// 			markers[i].setMap(null);
-// 		}
-// 		markers.length = 0;
-// 	}
-// }
+function deleteOverlays() {
+	console.log("deleteOverlays");
+	if (markers) {
+		for (i in markers) {
+			markers[i].setMap(null);
+		}
+		markers.length = 0;
+	}
+}
 
 
 
