@@ -23,7 +23,7 @@ form.addEventListener("submit", getRestaurants);
 display.addEventListener("click", saveRestaurant);
 
 // Firebase Setup
-var firebaseRef = new Firebase("https://foodstr-a1343.firebaseio.com/");
+// var firebaseRef = new Firebase("https://foodstr-a1343.firebaseio.com/");
 
 // Event Handlers 
 // ------------------------------------
