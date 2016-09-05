@@ -18,12 +18,12 @@ var favoriteRestaurants = [];
 
 // Events
 // ------------------------------------
-// window.addEventListener("load", loadListFirebase);
+window.addEventListener("load", loadListFirebase);
 form.addEventListener("submit", getRestaurants);
 display.addEventListener("click", saveRestaurant);
 
 // Firebase Setup
-// var firebaseRef = new Firebase("https://foodstr-a1343.firebaseio.com/");
+var firebaseRef = new Firebase("https://foodstr-a1343.firebaseio.com/");
 
 // Event Handlers 
 // ------------------------------------
@@ -105,13 +105,13 @@ function savePinLocations(restaurant) {
 }
 
 // Firebase Functions
-// function loadListFirebase() {
-// 	firebaseRef.on("value", loadRestaurants);
-// }
+function loadListFirebase() {
+	firebaseRef.on("value", loadRestaurants);
+}
 
-// function favListFirebase() {
-// 	firebaseRef.set(favoriteRestaurants);
-// }
+function favListFirebase() {
+	firebaseRef.set(favoriteRestaurants);
+}
 
 
 // Map Functions
