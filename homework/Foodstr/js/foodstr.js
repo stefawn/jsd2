@@ -31,10 +31,10 @@ function getRestaurants(event) {
 	var searchString = search.value;
 	
 	if (isNaN(searchString) === false) {
-		var zipUrl = "http://opentable.herokuapp.com/api/restaurants?zip=" + searchString;
+		var zipUrl = "https://opentable.herokuapp.com/api/restaurants?zip=" + searchString;
 		$.getJSON(zipUrl, updateRestaurants);	
 	} else if (isNaN(searchString) === true) {
-		var cityUrl = "http://opentable.herokuapp.com/api/restaurants?city=" + searchString;
+		var cityUrl = "https://opentable.herokuapp.com/api/restaurants?city=" + searchString;
 		$.getJSON(cityUrl, updateRestaurants);
 	}	else {
 		return;	
