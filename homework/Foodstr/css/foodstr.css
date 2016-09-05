@@ -1,0 +1,135 @@
+ /*General Styles*/
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 40px; 
+}
+
+.container h2 {
+  margin: 0;
+  margin-top: 10px;
+}
+
+.container p {
+  margin-top: 0;
+  margin-bottom: 2px;
+}
+
+.container button {
+  margin-bottom: 10px;
+  font-size: 9px;
+}
+
+ /*Header*/
+header {
+  background-color: #ff4d4d;
+  /*position: fixed;*/
+  top: 0;
+  left: 0;
+  right: 0;
+}
+header h1 {
+  color: #FFF;
+  padding: 10px;
+  margin: 0;
+  float: left;
+  padding-left: 0;
+  vertical-align: middle;
+}
+
+ /*Header navigation bar*/
+header nav {
+  padding: 20px;
+  float: right;
+  vertical-align: middle;
+}
+
+header #search input {
+  position: absolute;
+  right: 20px;
+  padding: 8px 0;
+  width: 0;
+  font-size: 14px;
+  transition: 0.2s all;
+}
+
+/*header #search.active input {
+  width: 160px;
+  padding: 8px 10px;
+  visibility: visible;
+}
+*/
+/*header #search.active a {
+  background: #CC0020;
+}*/
+
+/* Main Section */
+#main {
+  margin-top: 65px;
+}
+
+/* Map styles */
+.map {
+  float: left;
+  top: 25px;
+  left: 40px;
+  width: 400px;
+  height: 250px;
+}
+
+/* Search Results */
+.display {
+  position: absolute;
+  top: 65px;
+  left: 500px;
+  border-bottom: 1px solid grey;
+  border-bottom-color: #ffe6e6;
+  padding-bottom: 5px;
+  margin: 10px 0;
+}
+
+.display li {
+  border-bottom: 1px solid grey;
+  border-bottom-color: #f2f2f2;
+  list-style-type: none;
+  font-size: 13px;
+  clear: left;
+}
+
+.display li p, a {
+  color: #4d4d4d;
+}
+
+/* Favorites */
+.favorites {
+  position: absolute;
+  top: 360px;
+  left: 40px;
+}
+
+.favorites li {
+  font-size: 14px;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  list-style-position: inside;
+  font-style: italic;
+}
+
+.favorites h4, h5 {
+  padding: 0;
+  margin: 0;
+}
+
+.favorites h5 {
+  color: #ff4d4d;
+}
+
+.favorites button {
+  color: #999999;
+}
+
+
+
+
