@@ -10,14 +10,14 @@
 	 <link rel="stylesheet" href="css/html5bp.css">
 	 <link rel="stylesheet" href="css/normalize.css">
 </head>
-
+<!-- test -->
 <body>
   <header>
     <section class="container">
 	    <a href="#" class="home"><h1>Foodstr</h1></a>
 	    <nav>
 	    	<form>
-		    	<input id="search" type="text" placeholder="Enter City or Zipcode">
+		    	<input id="search" type="text" placeholder="Search City or Zipcode">
    			</form>
    		</nav>
     	<div class="clearfix"></div>
@@ -27,13 +27,13 @@
   <div class="map" id="places-map"></div>
 
   <section class="container">
+	  <div class="results"></div>
 	  <div class="display"></div>
-	  <ul class="results"></ul>
 
-<!-- 		<script id="header-template" type="text/x-handlebars-template">
-			<p>{{total_entries}} results found in {{restaurants.0.postal_code}}</p>
-			<p class="page">Page {{current_page}}</p>
-		</script> -->
+		<script id="header-template" type="text/x-handlebars-template">
+			<p>Results for <b>{{restaurants.0.city}}</b></p>
+			<h5>Click on each map marker for the name</h5>
+		</script>
 
 		<script id="restaurant-template" type="text/x-handlebars-template">
 			{{#each this}}
@@ -62,6 +62,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCadt0bucU5R_bmkVCvPDMwJGj0WWnG0B8&callback=initMap&libraries=places" async defer></script>
 <script src="js/foodstr.js"></script>
+<!-- <script src="js/test.js"></script> -->
 
 </body>
 </html>

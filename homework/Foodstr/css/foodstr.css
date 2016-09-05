@@ -80,16 +80,30 @@ header #search input {
 }
 
 /* Search Results */
+
+.results {
+  position: absolute;
+  top: 85px;
+  left: 500px;
+  font-size: 14px;
+  font-style: italic;
+  color: #4d4d4d;
+}
+
+.results h5 {
+  color: #ff4d4d;
+}
+
 .display {
   position: absolute;
-  top: 65px;
+  top: 115px;
   left: 500px;
-  border-bottom: 1px solid grey;
-  border-bottom-color: #ffe6e6;
+  border-top: 1px solid black;
+  border-top-color: #262626;
   padding-bottom: 5px;
   margin: 10px 0;
 }
-
+/**/
 .display li {
   border-bottom: 1px solid grey;
   border-bottom-color: #f2f2f2;

@@ -4,7 +4,7 @@ var search = document.querySelector("#search");
 var results = document.querySelector(".results");
 var display = document.querySelector(".display");
 var favoritesList = document.querySelector(".favorites-list");
-var searchButton = document.querySelector(".search-button");
+var button;
 
 var headerTemplate = document.querySelector("#header-template");
 var restaurantTemplate = document.querySelector("#restaurant-template");
@@ -21,10 +21,9 @@ var favoriteRestaurants = [];
 window.addEventListener("load", loadListFirebase);
 form.addEventListener("submit", getRestaurants);
 display.addEventListener("click", saveRestaurant);
-searchButton.addEventListener("click", getRestaurants);
 
 // Firebase Setup
-var fbRef = new Firebase("https://foodstr-a1343.firebaseio.com/");
+var firebaseRef = new Firebase("https://foodstr-a1343.firebaseio.com/");
 
 // Event Handlers 
 // ------------------------------------
@@ -68,8 +67,7 @@ function saveRestaurant(e) {
 // Update page
 // ------------------------------------
 function loadRestaurants(snapshot) {
-	console.log(loadRestaurants);
-	console.log(snapshot.val());
+	console.log("loadRestaurants");
 	if (snapshot.val() === null) {
 		return;
 	}
@@ -82,8 +80,8 @@ function updateRestaurants(json) {
 	
 	clearPrevious();
 	// // compile header template
-	// var template = Handlebars.compile(headerTemplate.innerHTML);
-	// display.innerHTML = template(json);
+	var template = Handlebars.compile(headerTemplate.innerHTML);
+	results.innerHTML = template(json);
 
 	// compiling the template source from <script> tag
 	// into a Handlebars template
@@ -93,6 +91,7 @@ function updateRestaurants(json) {
 	json.restaurants.forEach(savePinLocations);
 
 	createMarkers();
+
 }
 
 function clearPrevious() {
@@ -110,12 +109,12 @@ function savePinLocations(restaurant) {
 // ------------------------------------
 function loadListFirebase() {
 	console.log('listFirebase');
-	fbRef.on("value", loadRestaurants);
+	firebaseRef.on("value", loadRestaurants);
 }
 
 function favListFirebase() {
 	console.log('favlistFirebase');
-	fbRef.set(favoriteRestaurants);
+	firebaseRef.set(favoriteRestaurants);
 }
 
 
