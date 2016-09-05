@@ -29,7 +29,7 @@ var firebaseRef = new Firebase("https://foodstr-a1343.firebaseio.com/");
 // ------------------------------------
 function getRestaurants(event) {
 	var searchString = search.value;
-	
+	console.log("getRestaurants");
 	if (isNaN(searchString) === false) {
 		var zipUrl = "https://opentable.herokuapp.com/api/restaurants?zip=" + searchString;
 		$.getJSON(zipUrl, updateRestaurants);	
