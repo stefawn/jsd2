@@ -105,11 +105,14 @@ function savePinLocations(restaurant) {
 }
 
 // Firebase Functions
+// ------------------------------------
 function loadListFirebase() {
+	console.log('listFirebase');
 	firebaseRef.on("value", loadRestaurants);
 }
 
 function favListFirebase() {
+	console.log('favlistFirebase');
 	firebaseRef.set(favoriteRestaurants);
 }
 
