@@ -57,10 +57,8 @@ function saveRestaurant(e) {
 	if (!favoriteRestaurants.includes(addFavName)) {
 		console.log('addFavName: ' + addFavName);
 
-		var li = document.createElement("li");
-		li.textContent = addFavName;
-		favoritesList.appendChild(li);
-
+		populateFavs(addFavName);
+		
 		favoriteRestaurants.push(addFavName);
 		console.log('favoriteRestaurants: ' + favoriteRestaurants);
 	} else {
@@ -82,18 +80,24 @@ function clearFavorites() {
 function loadRestaurants(snapshot) {
 	console.log('loadRestaurants...');
 	console.log(snapshot.val());
+
 	if (snapshot.val() === null) {
 		return;
 	}
 	favoriteRestaurants = snapshot.val();
-	favoriteRestaurants.forEach(populateFavs);
+
+	if ($('.favorites-list li').length == 0){
+		favoriteRestaurants.forEach(populateFavs);		
+	} else {
+		return;
+	}
 }
 
-function populateFavs(e) { 
+function populateFavs(restaurantName) { 
 	console.log('populateFavs...');
-	console.log(favoriteRestaurants);
+	
 	var li = document.createElement("li");
-	li.textContent = favoriteRestaurants;
+	li.textContent = restaurantName;
 	favoritesList.appendChild(li);
 }
 
@@ -124,7 +128,6 @@ function favListFirebase() {
 	console.log('favlistFirebase');
 	firebaseRef.set(favoriteRestaurants);
 }
-
 
 // Map Functions
 // ------------------------------------
@@ -178,7 +181,6 @@ function createMarkers() {
 	map.setCenter(bounds.getCenter());
 	map.fitBounds(bounds);
 }
-
 
 function deleteOverlays() {
 	console.log("deleteOverlays");
