@@ -108,7 +108,6 @@ function loadRestaurants(snapshot) {
 
 function populateFavs(restaurantName) { 
 	console.log('populateFavs...');
-	console.log('test');
 	
 	var li = document.createElement("li");
 	li.textContent = restaurantName;
