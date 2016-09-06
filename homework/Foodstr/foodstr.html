@@ -39,9 +39,9 @@
 			{{#each this}}
 				<li>
 					<h2>{{name}}</h2>
-					<p>{{address}}, {{city}} {{state}}</p>
-					<p><a href="{{reserve_url}}">Reserve</a></p>
-					<button type="button" class="save">Save</button>
+					<p class="show-description">{{address}}, {{city}} {{state}}</p>
+					<p class="show-description"><a href="{{reserve_url}}">Reserve</a></p>
+					<button type="button" class="save show-description">Save</button>
 				</li>
 			{{/each}}
 		</script>
@@ -49,7 +49,7 @@
 		<div class="favorites">
 			<h4>Favorites</h4>
 			<h5>Saved restaurants will appear here<h5>
-				<button type="button">Clear</button>
+				<button type="button" class="clear">clear list</button>
 			<ul class="favorites-list">
 		</div>
 

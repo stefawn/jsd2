@@ -4,6 +4,7 @@ var search = document.querySelector("#search");
 var results = document.querySelector(".results");
 var display = document.querySelector(".display");
 var favoritesList = document.querySelector(".favorites-list");
+var clear = document.querySelector(".clear");
 var button;
 
 var headerTemplate = document.querySelector("#header-template");
@@ -21,6 +22,7 @@ var favoriteRestaurants = [];
 window.addEventListener("load", loadListFirebase);
 form.addEventListener("submit", getRestaurants);
 display.addEventListener("click", saveRestaurant);
+clear.addEventListener("click", clearFavorites);
 
 // Firebase Setup
 var firebaseRef = new Firebase("https://foodstr-a1343.firebaseio.com/");
@@ -53,10 +55,14 @@ function saveRestaurant(e) {
 	var addFavName = target.getElementsByTagName('h2')[0].innerHTML;
 
 	if (!favoriteRestaurants.includes(addFavName)) {
+		console.log('addFavName: ' + addFavName);
+
 		var li = document.createElement("li");
 		li.textContent = addFavName;
 		favoritesList.appendChild(li);
+
 		favoriteRestaurants.push(addFavName);
+		console.log('favoriteRestaurants: ' + favoriteRestaurants);
 	} else {
 		return;
 	}
@@ -64,27 +70,40 @@ function saveRestaurant(e) {
 	favListFirebase();
 }
 
+function clearFavorites() {
+	favoritesList.textContent = "";
+	favoriteRestaurants = [];
+	favListFirebase();
+}
+
+
 // Update page
 // ------------------------------------
 function loadRestaurants(snapshot) {
-	console.log("loadRestaurants");
+	console.log('loadRestaurants...');
+	console.log(snapshot.val());
 	if (snapshot.val() === null) {
 		return;
 	}
-
 	favoriteRestaurants = snapshot.val();
-	favoriteRestaurants.forEach();
+	favoriteRestaurants.forEach(populateFavs);
+}
+
+function populateFavs(e) { 
+	console.log('populateFavs...');
+	console.log(favoriteRestaurants);
+	var li = document.createElement("li");
+	li.textContent = favoriteRestaurants;
+	favoritesList.appendChild(li);
 }
 
 function updateRestaurants(json) {
 	
 	clearPrevious();
-	// // compile header template
+	// compile results template
 	var template = Handlebars.compile(headerTemplate.innerHTML);
 	results.innerHTML = template(json);
-
-	// compiling the template source from <script> tag
-	// into a Handlebars template
+	// compile display template
 	template = Handlebars.compile(restaurantTemplate.innerHTML);
 	display.innerHTML = template(json.restaurants);
 
@@ -92,17 +111,6 @@ function updateRestaurants(json) {
 
 	createMarkers();
 
-}
-
-function clearPrevious() {
-	// clears out the old results
-	results.innerHTML = '';
-	pinLocations = [];
-}
-
-function savePinLocations(restaurant) {
-	console.log("savePinLocations");
-	pinLocations.push({name: restaurant.name, lat: restaurant.lat, lng: restaurant.lng});
 }
 
 // Firebase Functions
@@ -182,5 +190,20 @@ function deleteOverlays() {
 	}
 }
 
+function clearPrevious() {
+	// clears out the old results
+	results.innerHTML = '';
+	pinLocations = [];
+}
+
+function savePinLocations(restaurant) {
+	console.log("savePinLocations");
+	pinLocations.push({name: restaurant.name, lat: restaurant.lat, lng: restaurant.lng});
+}
+
+
+// $('div').on('click', function() {
+// 	$(this).toggleClass('show-description');
+// });
 
 
