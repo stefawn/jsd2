@@ -14,6 +14,7 @@ var restaurantTemplate = document.querySelector("#restaurant-template");
 // ------------------------------------
 
 var favoriteRestaurants = [];
+var favoriteRestaurantsLinks = [];
 
 // Events
 // ------------------------------------
@@ -37,6 +38,7 @@ function loadListFirebase() {
 function favListFirebase() {
 	console.log('favlistFirebase');
 	firebaseRef.set(favoriteRestaurants);
+	// firebaseRef.set(favoriteRestaurantsLinks);
 }
 
 // Restaurant Functions
@@ -66,13 +68,18 @@ function saveRestaurant(e) {
 
 	var target = e.target.closest("li");
 	var addFavName = target.getElementsByTagName('h2')[0].innerHTML;
+	// commented out the reserve feature, couldn't get it to work w/ firebase
+	// var addResLink = target.getElementsByTagName('a')[0].href;
+	// console.log(addResLink);
 
 	if (!favoriteRestaurants.includes(addFavName)) {
 		console.log('addFavName: ' + addFavName);
 
 		populateFavs(addFavName);
+		// populateFavsLink(addResLink);
 		
 		favoriteRestaurants.push(addFavName);
+		// favoriteRestaurantsLinks.push(addResLink);
 		console.log('favoriteRestaurants: ' + favoriteRestaurants);
 	} else {
 		return;
@@ -97,7 +104,8 @@ function loadRestaurants(snapshot) {
 	favoriteRestaurants = snapshot.val();
 
 	if ($('.favorites-list li').length == 0){
-		favoriteRestaurants.forEach(populateFavs);		
+
+		favoriteRestaurants.forEach(populateFavs);
 	} else {
 		return;
 	}
@@ -112,6 +120,19 @@ function populateFavs(restaurantName) {
 	var li = document.createElement("li");
 	li.textContent = restaurantName;
 	favoritesList.appendChild(li);
+
+}
+
+function populateFavsLink(restaurantLink) { 
+	console.log('populateFavsLink...');
+	
+	var linkTitle = "Reserve";
+	var clickableLink = linkTitle.link(restaurantLink);
+
+	var p = document.createElement("p");
+	p.innerHTML = clickableLink;
+	favoritesList.appendChild(p);
+
 }
 
 function updateRestaurants(json) {

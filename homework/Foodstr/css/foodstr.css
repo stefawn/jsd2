@@ -55,16 +55,6 @@ header #search input {
   transition: 0.2s all;
 }
 
-/*header #search.active input {
-  width: 160px;
-  padding: 8px 10px;
-  visibility: visible;
-}
-*/
-/*header #search.active a {
-  background: #CC0020;
-}*/
-
 /* Main Section */
 #main {
   margin-top: 65px;
@@ -72,9 +62,9 @@ header #search input {
 
 /* Map styles */
 .map {
-  float: left;
-  top: 25px;
+  position: absolute;
   left: 40px;
+  top: 85px;
   width: 400px;
   height: 250px;
 }
@@ -143,6 +133,11 @@ header #search input {
 }
 
 .favorites button {
+  color: #999999;
+}
+
+.favorites p {
+  font-size: 10px;
   color: #999999;
 }
 
